@@ -3,6 +3,11 @@ package model;
 import java.util.ArrayList;
 
 //Rename this to apartment building
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
 public class ApartmentBuilding extends PropertyComponent {
 	private ArrayList<PropertyComponent> propertyComponents;
 	private String buildingName;

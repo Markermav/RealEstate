@@ -1,7 +1,11 @@
 package observer;
 
 import java.util.ArrayList;
-
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
 public class Subject {
 	ArrayList<Observer> observers;
 	public Subject() {

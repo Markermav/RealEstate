@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
 public class Condo extends Apartment {
     private int streetNumber;
     private String type = "condo";

@@ -1,5 +1,9 @@
 package model;
-
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
 public abstract class Property extends PropertyComponent {
 
 		public enum propertyState {Rented, VacantReady, VacantRenovation}

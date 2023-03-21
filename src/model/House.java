@@ -1,5 +1,9 @@
 package model;
-
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
 public class House extends Property{
     private int streetNumber;
 

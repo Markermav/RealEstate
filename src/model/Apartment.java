@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
 public class Apartment extends Property {
 
     private int aptNumber;

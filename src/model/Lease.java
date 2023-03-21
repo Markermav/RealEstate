@@ -3,6 +3,11 @@ package model;
 import model.Property.propertyState;
 import java.time.LocalDate;
 
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
 public class Lease {
     private Property unit;
     private Tenant tenant;
@@ -47,17 +52,21 @@ public class Lease {
     public boolean monthPaid() {
         return monthIsPaid;
     }
+    
+    public void setMonthPaid(boolean state) {
+    	monthIsPaid = state;
+    }
     @Override
     public String toString() {
-        return "Lease{" +
+        return  "--------------LEASE--------------------"
+                + "\n" +
                 "unit=" + unit +
                 ", tenant=" + tenant +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", rent=" + rent +
                 ", monthPaid=" + monthIsPaid +
-
-                '}';
+                "---------------------------------------";
     }
 }
 

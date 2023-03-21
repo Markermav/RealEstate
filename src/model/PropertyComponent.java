@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
 public abstract class PropertyComponent {
 	   public void addProperty(PropertyComponent property) {
        		throw new UnsupportedOperationException();

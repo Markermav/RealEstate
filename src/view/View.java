@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import observer.Observer;
-
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
 public class View implements Observer {
 	private Scanner sc;
 	
