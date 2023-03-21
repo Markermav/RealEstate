@@ -1,12 +1,17 @@
-package com.realestate.model;
+package model;
 
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
 public class Condo extends Apartment {
     private int streetNumber;
     private String type = "condo";
 
-    public Condo(String streetAddress, String city, String state, String postalCode, int unitNo, int bedrooms,
+    public Condo(String streetAddress, String city, String postalCode, int unitNo, int bedrooms,
             int bathRooms, double squareFeet, int streetNumber) {
-        super(streetAddress, city, state, postalCode, unitNo, bedrooms, bathRooms, squareFeet);
+        super(streetAddress, city, postalCode, unitNo, bedrooms, bathRooms, squareFeet);
         this.streetNumber = streetNumber;
     }
 
@@ -27,7 +32,7 @@ public class Condo extends Apartment {
         return "Condo {" +
                 "streetAddress='" + getstreetName() + '\'' +
                 ", city='" + getCity() + '\'' +
-                ", state='" + super.getState() + '\'' +
+                ", state='" + getState().name() + '\'' +
                 ", postalCode='" + getpostalCode() + '\'' +
                 ", unitNo=" + getAptNumber() +
                 ", streetNumber=" + streetNumber +
@@ -35,7 +40,7 @@ public class Condo extends Apartment {
                 ", bathRooms=" + getBathRooms() +
                 ", squareFeet=" + getSquareFeet() +
                 ", type='" + type + '\'' +
-                ", Property id=" + getId() + "\n" +
+                ", Property id=" + getID() + "\n" +
                 '}';
     }
 

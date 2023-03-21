@@ -1,34 +1,47 @@
-package com.realestate.model;
+package model;
 
+import model.Property.propertyState;
+import java.time.LocalDate;
 
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
 public class Lease {
-    private Object unit;
-    private Object tenant;
-    private String startDate;
-    private String endDate;
+    private Property unit;
+    private Tenant tenant;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private boolean monthIsPaid;
     private double rent;
 
-    public Lease(Object tenant, Object unit, String startDate, String endDate, double rent) {
+
+    public Lease(Tenant tenant, Property unit, LocalDate startDate, LocalDate endDate, double rent) {
         this.unit = unit;
         this.tenant = tenant;
         this.startDate = startDate;
         this.endDate = endDate;
         this.rent = rent;
+        this.monthIsPaid = false;
+        unit.setState(propertyState.Rented);
     }
+    
+    
 
-    public Object getUnit() {
+    public Property getUnit() {
         return unit;
     }
 
-    public Object getTenant() {
+    public Tenant getTenant() {
         return tenant;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
@@ -36,15 +49,24 @@ public class Lease {
         return rent;
     }
 
+    public boolean monthPaid() {
+        return monthIsPaid;
+    }
+    
+    public void setMonthPaid(boolean state) {
+    	monthIsPaid = state;
+    }
     @Override
     public String toString() {
-        return "Lease{" +
+        return  "--------------LEASE--------------------"
+                + "\n" +
                 "unit=" + unit +
                 ", tenant=" + tenant +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", rent=" + rent +
-                '}';
+                ", monthPaid=" + monthIsPaid +
+                "---------------------------------------";
     }
 }
 

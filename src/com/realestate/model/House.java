@@ -1,12 +1,14 @@
-package com.realestate.model;
-
-public class House extends Address{
+package model;
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
+public class House extends Property{
     private int streetNumber;
-    private String type = "house";
 
-    // we may require to inherit the appartmrent class here!
-    public House(String streetName, String city, String state, String postalCode, int streetNumber){
-        super(streetName, city, state, postalCode);
+    public House(String streetName, String city, String postalCode, int streetNumber){
+        super(streetName, city, postalCode);
         this. streetNumber = streetNumber;
     }
     public int getStreetNumber() {
@@ -15,8 +17,17 @@ public class House extends Address{
     public void setStreetNumber(int streetNumber) {
         this.streetNumber = streetNumber;
     }
-    public String getType() {
-        return type;
+    @Override
+    public String toString() {
+        return "--------------House-----------------"
+                + "\n" +
+                "streetAddress='" + getstreetName() + '\'' +
+                ", city='" + getCity() + '\'' +
+                ", postalcode='" + getpostalCode() + '\'' +
+                ", rented=" + getRented() +
+                ", state= " + getState().name() +
+                ", Property id=" + getID() + "\n" +
+                "---------------------------------------";
     }
     
 }

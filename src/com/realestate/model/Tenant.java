@@ -1,17 +1,23 @@
-package com.realestate.model;
+package model;
 
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
 public class Tenant {
 
     private int tenantId;
     private String name;
     private String email;
     private static int count = 0;
-    private String interestedInUnit;
+    private int interestedUnit;
 
     public Tenant(String name, String email) {
         this.name = name;
         this.email = email;
         this.tenantId = ++count;
+        this.interestedUnit = -1;
     }
 
     public String getName() {
@@ -30,12 +36,12 @@ public class Tenant {
         this.email = email;
     }
 
-    public String getInterestedInUnit() {
-        return interestedInUnit;
+    public int getInterestedInUnit() {
+        return interestedUnit;
     }
 
-    public void setInterestedInUnit(String interestedInUnit) {
-        this.interestedInUnit = interestedInUnit;
+    public void setInterestedUnit(int interestedInUnit) {
+        this.interestedUnit = interestedInUnit;
     }
 
     public int getTenantId() {

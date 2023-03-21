@@ -1,33 +1,26 @@
-package com.realestate.model;
+package model;
 
-public class Apartment extends Address {
+/**
+ * 
+ * @author pablo, kalinga
+ *
+ */
+public class Apartment extends Property {
 
     private int aptNumber;
     private int bedrooms;
     private int bathRooms;
     private double squareFeet;
-    private String type = "appartment";
-    private Boolean rented = false;
-    private int id;
-    private static int count = 0;
 
-    public Apartment(String streetName, String city, String state, String postalCode, int aptNumber, int bedrooms,
+    public Apartment(String streetName, String city, String postalCode, int aptNumber, int bedrooms,
             int bathRooms, double squareFeet) {
-        super(streetName, city, state, postalCode);
+        super(streetName, city, postalCode);
         this.aptNumber = aptNumber;
         this.bedrooms = bedrooms;
         this.bathRooms = bathRooms;
         this.squareFeet = squareFeet;
-        this.id = ++count;
     }
 
-    public Boolean getRented() {
-        return rented;
-    }
-
-    public void setRented(Boolean rented) {
-        this.rented = rented;
-    }
 
     public int getBedrooms() {
         return bedrooms;
@@ -61,17 +54,8 @@ public class Apartment extends Address {
         this.aptNumber = aptNumber;
     }
 
-    public String getType() {
-        return type;
-    }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Override
     public String toString() {
@@ -84,9 +68,9 @@ public class Apartment extends Address {
                 ", bedrooms=" + bedrooms +
                 ", bathRooms=" + bathRooms +
                 ", squareFeet=" + squareFeet +
-                ", type='" + type + '\'' +
-                ", rented=" + rented +
-                ", Property id=" + id + "\n" +
+                ", rented=" + getRented() +
+                ", state= " + getState().name() +
+                ", Property id=" + getID() + "\n" +
                 "---------------------------------------";
     }
 
