@@ -129,22 +129,25 @@ public class ShowUnitsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TableColumn<PropertyComponent, Integer> idColumn = new TableColumn<>("ID");
+        TableColumn<PropertyComponent, String> typeColumn = new TableColumn<>("Type");
         TableColumn<PropertyComponent, String> stateColumn = new TableColumn<>("State");;
         TableColumn<PropertyComponent, String> sNameColumn = new TableColumn<>("StreetName");
         TableColumn<PropertyComponent, String> cityColumn = new TableColumn<>("City");;
         TableColumn<PropertyComponent, String> postalCodeColumn = new TableColumn<>("Postal Code");;
 
-        table.getColumns().addAll(idColumn,stateColumn, cityColumn, sNameColumn,postalCodeColumn);
+        table.getColumns().addAll(idColumn,typeColumn, stateColumn, cityColumn, sNameColumn,postalCodeColumn);
 
         AccountingSystem model = AccountingSystem.getInstance();
         ObservableList<PropertyComponent> propertyObservableList = FXCollections.observableArrayList(model.getPropertyList());
         table.setItems(propertyObservableList);
 
         idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(((Property) cellData.getValue()).getID()).asObject());
+        typeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(((Property) cellData.getValue()).getType().toString()));
         sNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(((Property) cellData.getValue()).getstreetName()));
         cityColumn.setCellValueFactory(cellData -> new SimpleStringProperty(((Property) cellData.getValue()).getCity()));
         postalCodeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(((Property) cellData.getValue()).getpostalCode()));
         stateColumn.setCellValueFactory(cellData -> new SimpleStringProperty( ((Property) cellData.getValue()).getState().name()) );
         table.refresh();
+
     }
 }

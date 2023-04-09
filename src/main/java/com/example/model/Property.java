@@ -7,11 +7,14 @@ package com.example.model;
 public abstract class Property extends PropertyComponent {
 
 		public enum propertyState {Rented, VacantReady, VacantRenovation}
+        public enum propertyType {Apartment, House, Condo}
 		private static int nextID = 1;
 		protected int id;
         private String streetName;
         private String city;
         private propertyState state;
+
+        private propertyType type;
         private String postalCode;
     
         public Property(String streetName, String city, String postalCode) {
@@ -20,6 +23,7 @@ public abstract class Property extends PropertyComponent {
             this.postalCode = postalCode;
             this.id = nextID++;
             this.state = propertyState.VacantReady;
+            this.type = propertyType.Apartment;
         }
     
         public String getstreetName() {
@@ -33,6 +37,10 @@ public abstract class Property extends PropertyComponent {
         public void setState(propertyState status) {
         	state = status;
         }
+
+        public void setType(propertyType type) { this.type = type;}
+
+        public propertyType getType() {return type;}
         
         public propertyState getState() {
         	return state;

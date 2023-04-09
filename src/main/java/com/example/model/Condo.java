@@ -8,7 +8,6 @@ package com.example.model;
  */
 public class Condo extends Apartment {
     private int streetNumber;
-    private String type = "condo";
 
     public Condo(String streetAddress, String city, String postalCode, int unitNo, int bedrooms,
             int bathRooms, double squareFeet, int streetNumber) {
@@ -24,9 +23,7 @@ public class Condo extends Apartment {
         this.streetNumber = streetNumber;
     }
 
-    public String getType() {
-        return type;
-    }
+
 
     @Override
     public String toString() {
@@ -40,7 +37,7 @@ public class Condo extends Apartment {
                 ", bedrooms=" + getBedrooms() +
                 ", bathRooms=" + getBathRooms() +
                 ", squareFeet=" + getSquareFeet() +
-                ", type='" + type + '\'' +
+                ", type='" + this.getType().toString() + '\'' +
                 ", Property id=" + getID() + "\n" +
                 '}';
     }

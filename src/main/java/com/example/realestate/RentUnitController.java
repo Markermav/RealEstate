@@ -4,6 +4,7 @@ import com.example.db.AccountingSystem;
 import com.example.model.Lease;
 import com.example.model.Property;
 import com.example.model.Tenant;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -168,9 +169,30 @@ public class RentUnitController implements Initializable {
             if(available) {
                 model.addLease(new Lease(tenant,property,leaseStartDate.getValue(), leaseEndDate.getValue(),Double.parseDouble(rentPrice.getText())));
             }
+            Platform.runLater(() -> showSuccessMessage());
         });
 
 
+    }
+
+    @FXML
+    void resetForm() {
+        tenantID.clear();
+        propertyID.clear();
+        leaseStartDate.setValue(null);
+        leaseEndDate.setValue(null);
+        rentPrice.clear();
+
+    }
+
+    private void showSuccessMessage() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Successful");
+        alert.setHeaderText(null);
+        alert.setContentText("Lease created successfully!");
+        alert.initOwner(submit.getScene().getWindow());
+        alert.showAndWait();
+        resetForm();
     }
 
     @Override

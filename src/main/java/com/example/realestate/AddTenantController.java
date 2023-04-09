@@ -4,10 +4,12 @@ import com.example.db.AccountingSystem;
 import com.example.model.Condo;
 import com.example.model.Property;
 import com.example.model.Tenant;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -129,12 +131,39 @@ public class AddTenantController {
 
     @FXML
     void bOnSubmit(ActionEvent event) {
-        CompletableFuture.runAsync( () ->
-        {
-            AccountingSystem model = AccountingSystem.getInstance();
+        try {
             Tenant newTenant = new Tenant(tenantName.getText(), tenantEmail.getText());
-            model.addTenant(newTenant);
-        });
+            CompletableFuture.runAsync(() ->
+            {
+                AccountingSystem model = AccountingSystem.getInstance();
+                model.addTenant(newTenant);
+                Platform.runLater(() -> showSuccessMessage());
+            });
+        } catch(Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("An error occurred while submitting the form.");
+            alert.initOwner(submit.getScene().getWindow());
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void resetForm() {
+        tenantName.clear();
+        tenantEmail.clear();
+
+    }
+
+    private void showSuccessMessage() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Successful");
+        alert.setHeaderText(null);
+        alert.setContentText("Tenant added successfully!");
+        alert.initOwner(submit.getScene().getWindow());
+        alert.showAndWait();
+        resetForm();
     }
 
 }
